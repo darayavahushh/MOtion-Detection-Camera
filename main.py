@@ -92,7 +92,7 @@ while True:
             time_occ = time.time()
 
     # start recording
-    if args.get("record", None) is not None:
+    if args.get("record", None) is None:
         if checkTime(time.time(), old_time, t=5) is True:
             if text == 'Occupied' and recording_start is False:
                 vid_cod = cv.VideoWriter_fourcc(*'mp4v')

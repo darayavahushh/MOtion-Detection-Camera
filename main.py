@@ -32,8 +32,7 @@ def startRecording(output, frame, time_not_occ, time_occ):
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-v", "--video", help="path to the video file")
-ap.add_argument("-a", "--min-area", type=int, default=500, help="minimum area size")
-ap.add_argument("-r", "--record", help="no recording")
+ap.add_argument("-r", "--record", help="no recording", action='store_true')
 args = vars(ap.parse_args())
 # if the video argument is None, then we are reading from webcam
 if args.get("video", None) is None:
@@ -92,7 +91,7 @@ while True:
             time_occ = time.time()
 
     # start recording
-    if args.get("record", None) is None:
+    if args.get("record") is True:
         if checkTime(time.time(), old_time, t=60) is True:
             if text == 'Occupied' and recording_start is False:
                 vid_cod = cv.VideoWriter_fourcc(*'mp4v')

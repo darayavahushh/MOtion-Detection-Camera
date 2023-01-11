@@ -21,7 +21,7 @@ def startRecording(output, frame, time_not_occ, time_occ):
     global counter, recording_start
 
     output.write(frame)
-    if checkTime(time_not_occ, time_occ, t=5):
+    if checkTime(time_not_occ, time_occ, t=20):
         counter += 1
         recording_start = False
         output.release()
@@ -93,7 +93,7 @@ while True:
 
     # start recording
     if args.get("record", None) is None:
-        if checkTime(time.time(), old_time, t=5) is True:
+        if checkTime(time.time(), old_time, t=60) is True:
             if text == 'Occupied' and recording_start is False:
                 vid_cod = cv.VideoWriter_fourcc(*'mp4v')
                 filename = "cam_recording_" + str(datetime.datetime.now()).replace(' ', '_')

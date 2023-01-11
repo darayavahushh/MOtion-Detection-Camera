@@ -81,7 +81,7 @@ while True:
     contours, hierarchy = cv.findContours(foreground_mask, cv.RETR_TREE, cv.CHAIN_APPROX_NONE)
     for contour in contours:
         area = cv.contourArea(contour)  # determine the area of objects
-        if area > 1200:
+        if area > 1000:
             rect = cv.minAreaRect(contour)
             box = cv.boxPoints(rect)
             box = np.int0(box)
